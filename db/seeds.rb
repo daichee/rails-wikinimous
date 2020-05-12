@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# db/seeds.rb
+puts "Cleaning database..."
+Article.destroy_all
+
+puts 'Creating 100 fake articles...'
+100.times do
+  article = Article.new(
+    title: Faker::Quote.famous_last_words,
+    content: Faker::Quote.most_interesting_man_in_the_world
+  )
+  article.save!
+end
+puts 'Finished!'

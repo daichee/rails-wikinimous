@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default" role="navigation" id="navbar-index">
+  <a class="navbar-brand" href="/articles">Wikinimous</a>
+  <a href="/articles/new">New Article</a>
+</nav>
+<p></p>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @articles.each do |article| %>
+        <h2><%= link_to article.title, edit_article_path(article.id) %></h2>
+        <p><%= article.content %></p>
+        <%= link_to "Delete", article_path(article.id), method: :delete, data: { confirm: "Delete #{article.title}?" } %>
+        <p></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
